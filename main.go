@@ -51,17 +51,16 @@ func (a *Arrays) Insertion() {
 	//	fmt.Println("arr=", a.Arr)
 }
 
-func (a *Arrays) InsertionBin() {
+func (a *Arrays) InsertionShift() {
 	var j int
 	for i := 1; i < len(a.Arr); i++ {
 		t := a.Arr[i]
-		for j = i - 1; j >= 0 && (a.Arr[j] > a.Arr[j+1]); j-- {
-			//	a.Arr[j+1], a.Arr[j] = a.Arr[j], a.Arr[j+1]
+		for j = i - 1; j >= 0 && (a.Arr[j] > t); j-- {
 			a.Arr[j+1] = a.Arr[j]
 		}
 		a.Arr[j+1] = t
 	}
-	fmt.Println("arr=", a.Arr)
+	//	fmt.Println("arr=", a.Arr)
 }
 
 func binSearch(x int) int {
@@ -82,10 +81,10 @@ func (a *Arrays) Shell() {
 func main() {
 	//	count := 1000
 	var Arr Arrays
-	for i := 10; i <= 10; i *= 10 {
+	for i := 10; i <= 1000_000; i *= 10 {
 		Arr.Init(i)
 		start := time.Now()
-		Arr.InsertionBin()
+		Arr.InsertionShift()
 		duration := time.Since(start)
 		fmt.Println("count=", i, "time = ", duration)
 
